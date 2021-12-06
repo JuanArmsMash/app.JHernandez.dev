@@ -1,0 +1,26 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp1
+  labels:
+    app: webapp-sql
+    tier: frontend
+spec:
+  selector:
+    matchLabels:
+      app: webapp-sql
+      tier: frontend
+  replicas: 7
+  template:
+    metadata:
+      labels:
+        app: webapp-sql
+        tier: frontend
+    spec:
+      containers:
+      - name: webapp1
+        image: jahgtarea/appwebfinal:Crudv2
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
